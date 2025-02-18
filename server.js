@@ -59,7 +59,7 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-// API: Register User (Without Password Hashing)
+// API: Register User
 app.post("/api/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -85,7 +85,7 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
-// API: Login User (No Password Hashing)
+// API: Login User
 app.post("/api/login", async (req, res) => {
   const { error } = loginSchema.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
